@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS generation</title>
+</head>
+<body>
+    <h1>GPS generation</h1>
+    <b>A generator of GPS coordinates in a given radius away from your position.</b>
+    <p>Radius of the square (m) : </p>
+    <input type="text" class="radiusInput" placeholder="Radius">
+    <p>Your Latitude</p>
+    <input type="text" class="latitude" placeholder="Latitude">
+    <p>Your Longitude</p>
+    <input type="text" class="longitude" placeholder="Longitude">
+    
+    <button id="generation" onclick="generate()">Generate</button>
+    <script>
+        
+        // source of function : MDN Web Docs
+        function getRandomArbitrary(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        function meters_to_degres(meters) {
+            console.log('Meters_to_degres')
+            meter = 360/40007863;
+            console.log('1 meter  = '+meter);
+            let ret =  meters * meter;
+            console.log(meters+'m = '+ret+'°');
+            return ret
+        }
+
+        function generate() {
+            let radiusInput = document.querySelector('.radiusInput');
+            let latitude = document.querySelector('.latitude');
+            let longitude = document.querySelector('.longitude');
+            
+            let radius = Number(radiusInput.value);
+            radius = meters_to_degres(radius);
+            let lat= Number(latitude.value);
+            let long = Number(longitude.value);
+            
+            // latitude
+            let minLatitude = lat - radius;
+            let maxLatitude = lat + radius;
+            console.log('min lat : '+minLatitude);
+            console.log('max lat : '+maxLatitude);
+
+            // longitude
+            let minLongitude = long - radius;
+            let maxLongitude = long + radius;
+            console.log('min long : '+minLongitude);
+            console.log('max long : '+maxLongitude);
+            
+            var randomLatitude = getRandomArbitrary(minLatitude, maxLatitude);
+            var randomLongitude = getRandomArbitrary(minLongitude, maxLongitude);
+            console.log('random lat : '+randomLatitude);
+            console.log('random long : '+randomLongitude);
+
+            let finalLatitude = randomLatitude;
+            let finalLongitude = randomLongitude;
+
+            if (finalLatitude < -90 || finalLatitude > 90) {
+                alert('The Latitude is two high or two low.')
+            }
+            
+            if (finalLongitude < -90 || finalLongitude > 90) {
+                alert('The Latitude is two high or two low.')
+            }
+
+            console.log('final latitude : '+finalLatitude);
+            console.log('final longitude : '+finalLongitude);
+
+            //links
+            let openstreetmap = "https://www.openstreetmap.org/search?query=";
+            let google = "https://maps.google.com?q=";
+
+            let ggmaplink = String(openstreetmap + finalLatitude + "," + finalLongitude);
+            open(ggmaplink);
+
+        }
+    </script>
+</body>
+</html>
