@@ -37,15 +37,15 @@
     <h1>GPS generation</h1>
     <b>A generator of GPS coordinates in a given radius away from your position.</b>
     <p>Radius of the square (m) : </p>
-    <input type="text" class="radiusInput" placeholder="Radius">
+    <input type="text" class="radiusInput" placeholder="Radius" id="input">
     <p>Your Latitude</p>
-    <input type="text" class="latitude" placeholder="Latitude">
+    <input type="text" class="latitude" placeholder="Latitude" id="input">
     <p>Your Longitude</p>
-    <input type="text" class="longitude" placeholder="Longitude">
+    <input type="text" class="longitude" placeholder="Longitude" id="input">
     <br>
     <button id="position" onclick="getLocation()" class="btn">Get position</button>
     
-    <button id="generation" onclick="generate()">Generate</button>
+    <button id="generation" onclick="generate()" class="btn">Generate</button>
     <p id="show_pos"></p>
     <script>
         
