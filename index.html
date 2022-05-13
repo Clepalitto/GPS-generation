@@ -15,14 +15,34 @@
     <input type="text" class="latitude" placeholder="Latitude">
     <p>Your Longitude</p>
     <input type="text" class="longitude" placeholder="Longitude">
+    <br>
+    <button id="position" onclick="getLocation()" class="btn">Get position</button>
     
     <button id="generation" onclick="generate()">Generate</button>
+    <p id="show_pos"></p>
     <script>
         
         // source of function : MDN Web Docs
         function getRandomArbitrary(min, max) {
             return Math.random() * (max - min) + min;
         }
+        
+        ///////////////////////// From W3schools (getLocation function)
+        var p_pos = document.getElementById("show_pos");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+                p_pos.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            p_pos.innerHTML = "Latitude: " + position.coords.latitude + 
+            "<br>Longitude: " + position.coords.longitude;
+        }
+        /////////////////////////
 
         function meters_to_degres(meters) {
             console.log('Meters_to_degres')
