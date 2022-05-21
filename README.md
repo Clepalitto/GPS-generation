@@ -5,4 +5,9 @@ The `generate` button goes directly to an [openstreetmap.org](https://www.openst
 
 > This is just a "functional" program. It's just here because I thought it might be useul to some guy 🤔 ...
 
+## Possible uses
+
+- You want to go trekking, but you don't know where ... 🗻
+- You want to set an appointement place, but you don't know where ... 
+
 But if you like this, feel free to contribute !
